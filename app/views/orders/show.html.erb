@@ -6,6 +6,20 @@
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
+    <!-- Display order details -->
+    <div class="row">
+      <div class="col-md-6">
+        <h5>Order Details</h5>
+        <% @order.line_items.each do |item| %>
+          <%= render partial: 'line_item', locals: { item: item } %>
+        <% end %>
+      </div>
+      <div class="col-md-6">
+        <h5>Order Summary</h5>
+        <p><strong>Order Total:</strong> <%= number_to_currency(@order.total_cents / 100.0) %></p>
+        <p><strong>Email Used:</strong> <%= @order.email %></p>
+      </div>
+    </div>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>

@@ -1,0 +1,12 @@
+<!-- _line_item.html.erb -->
+<div class="line-item">
+  <div class="media">
+    <img src="<%= item.product.image_url %>" class="mr-3" alt="<%= item.product.name %>">
+    <div class="media-body">
+      <h5 class="mt-0"><%= item.product.name %></h5>
+      <p><%= item.product.description %></p>
+      <p>Quantity: <%= item.quantity %></p>
+      <p>Total: <%= number_to_currency(item.total_price) %></p>
+    </div>
+  </div>
+</div>
