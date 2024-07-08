@@ -7,7 +7,7 @@
 </header>
 <nav class="navbar navbar-expand-lg navbar-dark sticky-nav">
   <div class="container">
-    <a class="navbar-brand" href="<%= root_path %>">Jungle</a>
+    <%= link_to 'Jungle', root_path, class: 'navbar-brand' %>
     <button
       class="navbar-toggler"
       type="button"
@@ -58,13 +58,14 @@
             Admin
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><%= link_to 'Dashboard', [:admin, :root], class: "nav-link" %></li>
-            <li><%= link_to 'Products', [:admin, :products], class: "nav-link" %></li>
+            <li><%= link_to 'Dashboard', [:admin, :root], class: 'dropdown-item' %></li>
+            <li><%= link_to 'Products', [:admin, :products], class: 'dropdown-item' %></li>
+            <li><%= link_to 'Categories', [:admin, :categories], class: 'dropdown-item' %></li> <!-- New Categories link -->
           </ul>
         </li>
-        <li class="nav-item end-0">
-          <%= link_to cart_path, class: "nav-link" do %>
-            <%= fa_icon "shopping-cart" %>
+        <li class="nav-item">
+          <%= link_to cart_path, class: 'nav-link' do %>
+            <%= fa_icon 'shopping-cart' %>
             My Cart (<%= cart.size %>)
           <% end %>
         </li>
@@ -73,7 +74,7 @@
   </div>
 </nav>
 <script>
-(function(){
+(function() {
   const gnr = () => {
     const uptitle = document.querySelector("section.title h3");
     const subtitle = document.querySelector("section.title h2");
@@ -90,3 +91,4 @@
   title.addEventListener("dblclick", gnr);
 })();
 </script>
+
