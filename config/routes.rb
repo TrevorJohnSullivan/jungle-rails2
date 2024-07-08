@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'categories/index'
+    get 'categories/new'
+    get 'categories/create'
+  end
   get 'about/index'
   root to: 'products#index'
 
@@ -13,9 +18,9 @@ Rails.application.routes.draw do
   resources :orders, only: [:create, :show]
 
   namespace :admin do
-    root to: 'dashboard#show' # Route for the admin dashboard
+    root to: 'dashboard#show' 
     resources :products, except: [:edit, :update, :show]
-    # You can add other admin resources here if needed
+    resources :categories, only: [:index, :new, :create]
   end
 
     # New route for About page
