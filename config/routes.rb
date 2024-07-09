@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/destroy'
+  get 'users/new'
+  get 'users/create'
   namespace :admin do
     get 'categories/index'
     get 'categories/new'
@@ -6,6 +11,16 @@ Rails.application.routes.draw do
   end
   get 'about/index'
   root to: 'products#index'
+
+
+  resources :users, only: [:new, :create]
+  get 'register', to: 'users#new'
+
+  resources :sessions, only: [:new, :create, :destroy]
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+
 
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
